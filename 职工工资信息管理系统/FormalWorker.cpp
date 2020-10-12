@@ -2,10 +2,14 @@
 #include "FormalWorker.h"
 using namespace std;
 
-/* ÁÙÊ±¹¤µÄÈËÊı¸³³õÖµÎª0 (¶¨Òå) !!! */
+/**
+ * é™æ€æˆå‘˜å˜é‡å¿…é¡»è¦åœ¨ç±»å†…å£°æ˜, åœ¨ç±»å¤–åˆå§‹åŒ–
+ */
+
+/* ä¸´æ—¶å·¥çš„äººæ•°èµ‹åˆå€¼ä¸º0 (å®šä¹‰) !!! */
 int FormalWorker::formalCount = 0;
 
-/* ÁÙÊ±¹¤µÄ×Ü¹¤×Ê¸³³õÖµÎª0 (¶¨Òå) */
+/* ä¸´æ—¶å·¥çš„æ€»å·¥èµ„èµ‹åˆå€¼ä¸º0 (å®šä¹‰) */
 double FormalWorker::totalSalary = 0;
 
 FormalWorker::FormalWorker()
@@ -16,7 +20,7 @@ FormalWorker::FormalWorker()
     totalSalary += 0;
 }
 
-/* ×¢Òâ: ×ÓÀàµÄÓĞ²Î¹¹Ôìº¯ÊıÖĞ, Ò»¶¨Òª¸ø¸¸ÀàµÄÊôĞÔ¸³Öµ */
+/* æ³¨æ„: å­ç±»çš„æœ‰å‚æ„é€ å‡½æ•°ä¸­, ä¸€å®šè¦ç»™çˆ¶ç±»çš„å±æ€§èµ‹å€¼ */
 FormalWorker::FormalWorker(string name, double basicSalary, double tax) : Worker(name, basicSalary)
 {
     this->tax = tax;
@@ -41,26 +45,26 @@ double FormalWorker::getTax()
     return tax;
 }
 
-/* Êä³öÕıÊ½Ö°¹¤µÄĞÕÃû¡¢»ù±¾¹¤×Ê¡¢ËùµÃË°¡¢Êµ·¢¹¤×Ê */
+/* è¾“å‡ºæ­£å¼èŒå·¥çš„å§“åã€åŸºæœ¬å·¥èµ„ã€æ‰€å¾—ç¨ã€å®å‘å·¥èµ„ */
 void FormalWorker::show()
 {
     cout << getName() << "\t" << getBasicSalary() << "\t" << getTax() << "\t" << getRealSalary() << endl;
 }
 
-/* Êä³öÕıÊ½Ö°¹¤µÄ×ÜÊı */
+/* è¾“å‡ºæ­£å¼èŒå·¥çš„æ€»æ•° */
 void FormalWorker::showCount()
 {
-    cout << "ÕıÊ½Ö°¹¤µÄ×ÜÈËÊıÎª: " << formalCount << endl;
+    cout << "æ­£å¼èŒå·¥çš„æ€»äººæ•°ä¸º: " << formalCount << endl;
 }
 
-/* Êä³öÕıÊ½Ö°¹¤µÄ×Ü¹¤×Ê¡¢Æ½¾ù¹¤×Ê */
+/* è¾“å‡ºæ­£å¼èŒå·¥çš„æ€»å·¥èµ„ã€å¹³å‡å·¥èµ„ */
 void FormalWorker::showSalary()
 {
-    cout << "ÕıÊ½Ö°¹¤µÄ×Ü¹¤×ÊÎª: " << totalSalary << endl;
-    cout << "ÕıÊ½Ö°¹¤µÄÆ½¾ù¹¤×ÊÎª: " << totalSalary / formalCount << endl << endl;
+    cout << "æ­£å¼èŒå·¥çš„æ€»å·¥èµ„ä¸º: " << totalSalary << endl;
+    cout << "æ­£å¼èŒå·¥çš„å¹³å‡å·¥èµ„ä¸º: " << totalSalary / formalCount << endl << endl;
 }
 
-/* ÖØÔØ×óÒÆÔËËã·û (ÓÃÓÚÊä³öÒ»¸ö¶ÔÏóµÄĞÅÏ¢) */
+/* é‡è½½å·¦ç§»è¿ç®—ç¬¦ (ç”¨äºè¾“å‡ºä¸€ä¸ªå¯¹è±¡çš„ä¿¡æ¯) */
 ostream& operator<<(ostream& cout, FormalWorker& f)
 {
     cout << f.getName() << "\t" << f.getBasicSalary() << "\t"
