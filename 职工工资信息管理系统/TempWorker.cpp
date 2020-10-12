@@ -2,21 +2,25 @@
 #include "TempWorker.h"
 using namespace std;
 
-/* ÁÙÊ±¹¤µÄÈËÊı¸³³õÖµÎª0 (¶¨Òå) */
+/**
+ * é™æ€æˆå‘˜å˜é‡å¿…é¡»è¦åœ¨ç±»å†…å£°æ˜, åœ¨ç±»å¤–åˆå§‹åŒ–
+ */
+
+/* ä¸´æ—¶å·¥çš„äººæ•°èµ‹åˆå€¼ä¸º0 (å®šä¹‰) */
 int TempWorker::tempCount = 0;
 
-/* ÁÙÊ±¹¤µÄ×Ü¹¤×Ê¸³³õÖµÎª0 (¶¨Òå) */
+/* ä¸´æ—¶å·¥çš„æ€»å·¥èµ„èµ‹åˆå€¼ä¸º0 (å®šä¹‰) */
 double TempWorker::totalSalary = 0;
 
 TempWorker::TempWorker()
 {
     this->bonus = 0;
     this->realSalary = getBasicSalary();
-    tempCount++;               // ÁÙÊ±¹¤¸öÊı¼Ó1
+    tempCount++;               // ä¸´æ—¶å·¥ä¸ªæ•°åŠ 1
     totalSalary += 0;
 }
 
-/* ×¢Òâ: ×ÓÀàµÄÓĞ²Î¹¹Ôìº¯ÊıÖĞ, Ò»¶¨Òª¸ø¸¸ÀàµÄÊôĞÔ¸³Öµ */
+/* æ³¨æ„: å­ç±»çš„æœ‰å‚æ„é€ å‡½æ•°ä¸­, ä¸€å®šè¦ç»™çˆ¶ç±»çš„å±æ€§èµ‹å€¼ */
 TempWorker::TempWorker(string name, double basicSalary, double bonus) : Worker(name, basicSalary)
 {
     this->bonus = bonus;
@@ -27,42 +31,42 @@ TempWorker::TempWorker(string name, double basicSalary, double bonus) : Worker(n
 
 TempWorker::~TempWorker()
 {
-    tempCount--;               // ÁÙÊ±¹¤¸öÊı¼õ1
+    tempCount--;               // ä¸´æ—¶å·¥ä¸ªæ•°å‡1
     totalSalary -= realSalary;
 }
 
-/* »ñµÃÁÙÊ±Ö°¹¤µÄÊµ·¢¹¤×Ê */
+/* è·å¾—ä¸´æ—¶èŒå·¥çš„å®å‘å·¥èµ„ */
 double TempWorker::getBonus()
 {
     return bonus;
 }
 
-/* »ñµÃÁÙÊ±Ö°¹¤µÄÊµ·¢¹¤×Ê */
+/* è·å¾—ä¸´æ—¶èŒå·¥çš„å®å‘å·¥èµ„ */
 double TempWorker::getRealSalary()
 {
     return realSalary;
 }
 
-/* Êä³öÁÙÊ±Ö°¹¤µÄĞÕÃû¡¢»ù±¾¹¤×Ê¡¢ËùµÃË°¡¢Êµ·¢¹¤×Ê */
+/* è¾“å‡ºä¸´æ—¶èŒå·¥çš„å§“åã€åŸºæœ¬å·¥èµ„ã€æ‰€å¾—ç¨ã€å®å‘å·¥èµ„ */
 void TempWorker::show()
 {
     cout << getName() << "\t" << getBasicSalary() << "\t" << getBonus() << "\t" << getRealSalary() << endl;
 }
 
-/* Êä³öÁÙÊ±¹¤µÄ×ÜÊı */
+/* è¾“å‡ºä¸´æ—¶å·¥çš„æ€»æ•° */
 void TempWorker::showCount()
 {
-    cout << "ÁÙÊ±Ö°¹¤µÄ×ÜÈËÊıÎª: " << tempCount << endl;
+    cout << "ä¸´æ—¶èŒå·¥çš„æ€»äººæ•°ä¸º: " << tempCount << endl;
 }
 
-/* Êä³öÁÙÊ±¹¤µÄ×Ü¹¤×Ê¡¢Æ½¾ù¹¤×Ê */
+/* è¾“å‡ºä¸´æ—¶å·¥çš„æ€»å·¥èµ„ã€å¹³å‡å·¥èµ„ */
 void TempWorker::showSalary()
 {
-    cout << "ÁÙÊ±Ö°¹¤µÄ×Ü¹¤×ÊÎª: " << totalSalary << endl;
-    cout << "ÁÙÊ±Ö°¹¤µÄÆ½¾ù¹¤×ÊÎª: " << totalSalary / tempCount << endl << endl;
+    cout << "ä¸´æ—¶èŒå·¥çš„æ€»å·¥èµ„ä¸º: " << totalSalary << endl;
+    cout << "ä¸´æ—¶èŒå·¥çš„å¹³å‡å·¥èµ„ä¸º: " << totalSalary / tempCount << endl << endl;
 }
 
-/* ÖØÔØ×óÒÆÔËËã·û (ÓÃÓÚÊä³öÒ»¸ö¶ÔÏóµÄĞÅÏ¢) */
+/* é‡è½½å·¦ç§»è¿ç®—ç¬¦ (ç”¨äºè¾“å‡ºä¸€ä¸ªå¯¹è±¡çš„ä¿¡æ¯) */
 ostream& operator<<(ostream& cout, TempWorker& t)
 {
     cout << t.getName()  << "\t" << t.getBasicSalary() << "\t"
